@@ -10,6 +10,14 @@ intents: [
 
 })
 
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+});
+
+client.on("shardError", error => {
+    console.error('A websocket connection encountered an error:', error);
+});
+
 client.on('ready', () => {
     console.log('the bot is online')
 })
